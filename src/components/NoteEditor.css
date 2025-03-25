@@ -1,0 +1,223 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.note-editor {
+  border: 1px solid;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for definition */
+  transition: background-color 0.3s, color 0.3s;
+  position: relative; /* Ensure proper positioning */
+}
+
+.note-editor .toggle {
+  display: flex;
+  float: right;
+}
+
+.note-editor-light {
+  position: relative; 
+  background-color: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(15px); 
+  -webkit-backdrop-filter: blur(15px);
+  color: #090909;
+}
+.note-editor-dark {
+  position: relative; 
+  background-color: rgba(44, 44, 44, 0.6); 
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(15px); 
+  -webkit-backdrop-filter: blur(15px); 
+  color: #f9f9f9;
+}
+
+.note-editor h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.note-editor .switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  background-color: #ccc;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+input:checked + .slider {
+  background-color: #007bff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.textarea-light {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none; /* Prevent resizing */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.7); 
+  backdrop-filter: blur(5px); 
+  color: #333;
+}
+
+.textarea-dark {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.1);
+  background-color: #444;
+  color: #f9f9f9;
+}
+
+.textarea-light:focus,
+.textarea-dark:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.note-editor .back-to-main-button {
+  padding: 10px 15px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.note-editor .back-to-main-button:hover {
+  /* background-color: #007bff; */
+  border-radius: 50%;
+  color: white;
+}
+
+/* .back-to-main-button {
+  background-color: #6c757d;
+  color: white;
+}
+
+.back-to-main-button:hover {
+  background-color: #5a6268;
+} */
+
+.back-to-main-button {
+  display: block;
+  position: absolute;
+  top: 50px;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  overflow: hidden;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+}
+
+.back-to-main-button:before,
+.back-to-main-button:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 7px;
+}
+
+.back-to-main-button:before {
+  border: 4px solid #ccc;
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.back-to-main-button:after {
+  border: 4px solid #007bff;
+  transform: scale(1.3);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.back-to-main-button:hover:before,
+.back-to-main-button:focus:before {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-color: #bbb;
+}
+
+.back-to-main-button:hover:after,
+.back-to-main-button:focus:after {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+  border-color: #0056b3; /* Darker blue for hover effect */
+}
+
+.button-box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.button-elem {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 17px 18px 0 18px;
+  transform: rotate(180deg);
+  fill: #007bff;
+}
+
+.button:hover .button-elem,
+.button:focus .button-elem {
+  fill: #0056b3;
+}
+
+.button:hover .button-box,
+.button:focus .button-box {
+  transition: 0.4s;
+  transform: translateX(-56px);
+}
