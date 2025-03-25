@@ -15,7 +15,7 @@ function App() {
   };
 
   return (
-    <>
+
       <div className={`app ${isDarkMode ? 'dark' : 'light'}`}>
         <Router>
           <Routes>
@@ -28,7 +28,7 @@ function App() {
           </Routes>
         </Router>
       </div>
-    </>
+    
   );
 }
 
