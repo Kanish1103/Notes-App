@@ -22,11 +22,11 @@ const NoteEditor = ({ isDarkMode, toggleTheme }) => {
             storedNotes.push(note);
         }
         localStorage.setItem('notes', JSON.stringify(storedNotes));
-        navigate('/');
+        navigate('/Notes-App');
     };
 
     const goToMainPage = () => {
-        navigate('/');
+        navigate('/Notes-App');
     };
 
     return (
